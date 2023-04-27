@@ -19,10 +19,7 @@ class UserRepository:
         db.session.commit()
         return new_user
 
-    # def search_movies(self, title):
-    #     # TODO get all movies matching case insensitive substring (SQL LIKE, use google for how to do with SQLAlchemy)
-    #     x = Movie.query.filter((func.lower(Movie.title).like('%'+title.lower()+'%'))).all()
-    #     return x
+
 
 
 # Singleton to be used in other modules

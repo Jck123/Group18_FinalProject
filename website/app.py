@@ -33,9 +33,6 @@ def index5():
 #     return render_template('user.html', user=single_user)
 #TODO: make user page
 
-# @app.get('/movies/new')
-# def create_movies_form():
-#     return render_template('create_movies_form.html', create_rating_active=True)
 
 
 @app.post('/login')
@@ -65,11 +62,3 @@ def create_movie():
     user_repository_singleton.create_user(fname, lname, uname, email, pword)
     return redirect('/login')
 
-
-# @app.get('/movies/search')
-# def search_movies():
-#     found_movies = []
-#     q = request.args.get('q', '')
-#     if q != '':
-#         found_movies = movie_repository_singleton.search_movies(q)
-#     return render_template('search_movies.html', search_active=True, movies=found_movies, search_query=q)
