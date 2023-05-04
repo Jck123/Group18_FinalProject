@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style>
+		body {
+			background-color: rgb(178, 201, 178);
+		}
+		
+		.navbar {
+			background-color: rgb(45, 85, 55);
+			padding: 10px;
+		}
+		
+		.navbar a {
+			color: black;
+			margin-right: 20px;
+			font-size: 18px;
+			text-decoration: none;
+		}
+		
+		.navbar a:hover {
+			color: rgb(144, 144, 151);
+		}
+		
+		.login-form {
+			background-color: white;
+			padding: 20px;
+			margin-top: 50px;
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px grey;
+		}
+		
+		.login-form input {
+			margin-bottom: 10px;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		.login-form button {
+			background-color: rgb(99, 99, 100);
+			color: white;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			width: 100%;
+			box-sizing: border-box;
+			cursor: pointer;
+		}
+		
+		.login-form button:hover {
+			background-color: darkblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar">
+		<a href="#">Home</a>
+		<a href="/login">Login</a>
+		<a href="/register">Register</a>
+	</div>
+	
+	<div class="login-form">
+		<h1>Login</h1>
+		<form action="/login" method="post">
+			<input type="text" name="username" id="username" placeholder="Username">
+			<input type="password" name="password" id="password" placeholder="Password">
+			<button type="submit">Login</button>
+		</form>
+	</div>
+
+	<h1>{{ etext }}</h1>
+</body>
+</html>
