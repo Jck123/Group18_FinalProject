@@ -15,30 +15,20 @@ CREATE TABLE user (
     join_date		DATE
 );
 
-CREATE TABLE post (
-    contents        TEXT(65535),
-    id              INT PRIMARY KEY AUTO_INCREMENT,
-    post_date		DATETIME
-);
-
 CREATE TABLE board (
     name            VARCHAR(64),
     description     TINYTEXT,
     id              INT PRIMARY KEY
 );
 
-CREATE TABLE author (
-    user_id         INT,
-    post_id         INT,
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (post_id) REFERENCES post(id)
-);
-
-CREATE TABLE post_location (
-    post_id         INT,
-    board_id        INT,
-    FOREIGN KEY (post_id) REFERENCES post(id),
-    FOREIGN KEY (board_id) REFERENCES board(id)
+CREATE TABLE post (
+    contents        TEXT(65535),
+    id              INT PRIMARY KEY AUTO_INCREMENT,
+    board_id		INT,
+    author_id		INT,
+    post_date		DATETIME,
+    FOREIGN KEY (board_id) REFERENCES board(id),
+    FOREIGN KEY (author_id) REFERENCES user(id)
 );
 
 #Create data
@@ -55,23 +45,9 @@ INSERT INTO board VALUES
 ('ITSC-3155', 'A forum for all questions regarding Intro to Software Engineering', 10),
 ('ITCS-3145', ' A forum for all questions regarding Intro to Parallel and Distributed Computing', 11);
 
-INSERT INTO post (contents, post_date) VALUES
-('I need help with SQLAlchemy. I don\'t really understand how to get started', '2023-05-02'),
-('What time is the final exam?', '2023-05-02'),
-('A computer scientist walks into a bar and asks for 10 beers for him and his friend', '2023-05-02'),
-('What is parallel and distributed computing?', '2023-05-02'),
-('How do I switch majors to be a computer scientist?', '2023-05-02');
-
-INSERT INTO post_location VALUES
-(1, 10),
-(2, 10),
-(3, 1),
-(4, 11),
-(5, 0);
-
-INSERT INTO author VALUES
-(1, 1),
-(3, 2),
-(2, 3),
-(1, 4),
-(4, 5);
+INSERT INTO post (contents, post_date, author_id, board_id) VALUES
+('I need help with SQLAlchemy. I don\'t really understand how to get started', '2023-05-02', 1, 10),
+('What time is the final exam?', '2023-05-02', 3, 10),
+('A computer scientist walks into a bar and asks for 10 beers for him and his friend', '2023-05-02', 2, 1),
+('What is parallel and distributed computing?', '2023-05-02', 1, 11),
+('How do I switch majors to be a computer scientist?', '2023-05-02', 4, 0);
