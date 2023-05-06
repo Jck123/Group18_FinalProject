@@ -38,9 +38,9 @@ def index4():
 @app.get('/Login/failure')
 def index5():
     return render_template('login.html', etext="Login failed, try again")
-@app.get('/forum')
-def index6():
-    allposts = user_repository_singleton.get_all_posts()
+@app.get('/forum/<id>')
+def index6(id):
+    allposts = user_repository_singleton.get_all_posts(id)
     if 'userID' in request.cookies:
         return render_template('forum.html', posts=allposts, log="Logout")   
     else:

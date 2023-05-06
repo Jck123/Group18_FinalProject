@@ -9,9 +9,9 @@ class UserRepository:
         all = user.query.all()
         return all
     
-    def get_all_posts(self):
+    def get_all_posts(self, id):
         # TODO get all posts from the DB
-        return db.session.execute(select(post.contents, post.post_date, user.fname, user.lname).join(user, user.id == post.author_id))
+        return db.session.execute(select(post.contents, post.post_date, user.fname, user.lname).join(user, user.id == post.author_id).where(post.board_id==id))
 
     def get_user_by_name(self, name2):
         # TODO get a user from the db by username
