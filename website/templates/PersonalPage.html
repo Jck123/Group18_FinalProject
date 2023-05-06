@@ -32,21 +32,21 @@
     <body>
         <ul class = "nav nav-tabs">
             <li class = "nav-item">
-                <a class ="nav-link", href="",> Home</a>
+                <a class ="nav-link", href="/",> Home</a>
             </li>
             <li class = "nav-item">
                 <a href="PersonalPage.html", class ="nav-link active">Profile</a>
             </li>
             <li class = "nav-item">
-                <a href="Login.html", class= "nav-link ">Logout</a>
+                <a href="/{{log}}", class= "nav-link ">{{log}}</a>
             </li>
         </ul>
     <form method ="post">
         <img src = "Profile.jpg", style="width:100px;height:100px">
-        <h5> User:</h5>
-        <h5>Name:</h5>
-        <h5>Date Joined:</h5>
-        <h5>Bio:</h5>
+        <h5> User: {{ userid.username }}</h5>
+        <h5>Name: {{ userid.fname }} {{ userid.lname }}</h5>
+        <h5>Date Joined: {{ userid.join_date }} </h5>
+        <h5>Bio: {{ userid.bio }}</h5>
 
     </form>
     </body>

@@ -61,8 +61,18 @@
         <textarea></textarea>
 		<input type="submit" value="Post">
 	</form>
+	
+	<h2>Posts</h2>
 
+	{% for x in posts %}
 	<div class="post">
+		<div class="post-info">
+			<span class="author">{{x.fname}} {{x.lname}}</span>
+			<span class="date">Posted on {{x.post_date}}</span>
+		</div>
+		<p>{{x.contents}}</p>
+	{% endfor %}
+	<!-- <div class="post">
 		<h2>Posts</h2>
 		<div class="post-info">
 			<span class="author">Soobin</span>
@@ -76,7 +86,7 @@
 				<span class="date">Posted on August 14, 2002</span>
 			</div>
 			<p>I need homework help.</p>
-	
+	 -->
 		
 
 		
