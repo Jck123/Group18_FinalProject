@@ -93,7 +93,7 @@ def create_post(id):
         if content == '':
             abort(400)
         user_repository_singleton.create_post(content, id, request.cookies.get('userID'))    
-        return redirect('/forum/<id>')
+        return redirect('/forum/' + str(id))
     else:
         return render_template('login.html', etext="Please log in to create a post")
     
