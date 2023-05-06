@@ -42,9 +42,9 @@ def index5():
 def index6(id):
     allposts = user_repository_singleton.get_all_posts(id)
     if 'userID' in request.cookies:
-        return render_template('forum.html', posts=allposts, log="Logout")   
+        return render_template('forum.html', posts=allposts, id2 = id, log="Logout")   
     else:
-        return render_template('forum.html', posts=allposts, log="Login")
+        return render_template('forum.html', posts=allposts, id2 = id, log="Login")
     
 
 
@@ -75,7 +75,7 @@ def log_in():
 
 
 @app.post('/register')
-def create_movie():
+def create_user():
     fname = request.form.get('firstname', '')
     lname = request.form.get('lastname', '')
     uname = request.form.get('username', '')
@@ -86,14 +86,14 @@ def create_movie():
     user_repository_singleton.create_user(fname, lname, uname, email, pword)
     return redirect('/Login')
 
-@app.post('/forum')
-def create_forum():
-    fname = request.form.get('firstname', '')
-    lname = request.form.get('lastname', '')
-    uname = request.form.get('username', '')
-    pword = request.form.get('password', '')
-    email = request.form.get('email', '')
-    if fname == '' or lname == '' or uname == ''  or pword == ''  or email== '' :
-        abort(400)
-    user_repository_singleton.create_user(fname, lname, uname, email, pword)
-    return redirect('/Login')
+@app.post('/forum/<id>')
+def create_post(id):
+    if 'userID' in request.cookies:
+        content = request.form.get('text', '')
+        if content == '':
+            abort(400)
+        user_repository_singleton.create_post(content, id, request.cookies.get('userID'))    
+        return redirect('/forum/<id>')
+    else:
+        return render_template('login.html', etext="Please log in to create a post")
+    

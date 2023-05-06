@@ -27,6 +27,12 @@ class UserRepository:
         db.session.add(new_user)
         db.session.commit()
         return new_user
+    
+    def create_post(self, contents2, board_id2, author_id2):
+        new_post = post(contents= contents2, board_id=board_id2, author_id=author_id2, post_date=datetime.datetime.now())
+        db.session.add(new_post)
+        db.session.commit()
+        return new_post
 
     
 

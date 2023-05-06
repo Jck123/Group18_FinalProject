@@ -54,11 +54,23 @@
 	</style>
 </head>
 <body>
+	<ul class = "nav nav-tabs">
+        <li class = "nav-item">
+            <a class ="nav-link active", href="Homepage.html",> Home</a>
+        </li>
+        <li class = "nav-item">
+            <a href="/user", class ="nav-link">Profile</a>
+        </li>
+        <li class = "nav-item">
+            <a href="/{{log}}", class= "nav-link ">{{log}}</a>
+        </li>
+    </ul>
 	<h1>Forum Page</h1>
 
-	<form>
+	<form action="/forum/{{id2}}" method="post">
 		<h2>Create a post below:</h2>
-        <textarea></textarea>
+		<textarea type="textarea", name="text", id="text", class="form-control", required> 
+		</textarea>
 		<input type="submit" value="Post">
 	</form>
 	
